@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KHAIRUL.SYS — GitHub Profile</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/2.44.0/tabler-icons.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <style>
+        *{box-sizing:border-box;margin:0;padding:0;}
+        body{background:#020d0a;font-family:'Share Tech Mono',monospace;color:#00ff9d;overflow-x:hidden;}
+        .jv{background:#020d0a;border:1px solid #0f3d2a;border-radius:12px;padding:1.5rem;font-family:'Share Tech Mono',monospace;color:#00ff9d;overflow:hidden;position:relative;max-width:900px;margin:20px auto;}
+        .jv::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,255,100,0.015) 2px,rgba(0,255,100,0.015) 4px);pointer-events:none;z-index:0;}
+        .jv>*{position:relative;z-index:1;}
+
+        .hud-top{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #0f3d2a;padding-bottom:12px;margin-bottom:16px;}
+        .hud-logo{font-family:'Orbitron',monospace;font-size:10px;font-weight:700;color:#00ff9d;letter-spacing:0.2em;}
+        .hud-status{display:flex;align-items:center;gap:8px;font-size:10px;color:#00cc7a;}
+        .dot-pulse{width:7px;height:7px;border-radius:50%;background:#00ff9d;animation:pulse 1.5s infinite;}
+        @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.3;}}
+        .hud-time{font-size:10px;color:#005c38;letter-spacing:0.1em;}
+
+        .hero-grid{display:grid;grid-template-columns:80px 1fr;gap:16px;margin-bottom:20px;align-items:center;}
+        .avatar-hud{width:80px;height:80px;border-radius:8px;border:1px solid #00ff9d;display:flex;align-items:center;justify-content:center;font-family:'Orbitron',monospace;font-size:22px;font-weight:900;color:#00ff9d;position:relative;background:#010f08;}
+        .avatar-hud::before{content:'';position:absolute;top:-1px;left:-1px;right:-1px;bottom:-1px;border-radius:8px;border:1px solid #003d22;animation:scan 3s linear infinite;}
+        @keyframes scan{0%{clip-path:inset(0 0 100% 0);}100%{clip-path:inset(0 0 0% 0);}}
+        .corner{position:absolute;width:8px;height:8px;border-color:#00ff9d;}
+        .c-tl{top:2px;left:2px;border-top:2px solid;border-left:2px solid;}
+        .c-tr{top:2px;right:2px;border-top:2px solid;border-right:2px solid;}
+        .c-bl{bottom:2px;left:2px;border-bottom:2px solid;border-left:2px solid;}
+        .c-br{bottom:2px;right:2px;border-bottom:2px solid;border-right:2px solid;}
+
+        .id-tag{font-family:'Orbitron',monospace;font-size:18px;font-weight:700;color:#00ff9d;letter-spacing:0.08em;margin-bottom:4px;}
+        .id-role{font-size:11px;color:#00cc7a;letter-spacing:0.15em;margin-bottom:8px;}
+        .id-loc{font-size:10px;color:#005c38;margin-bottom:10px;}
+        .pill-row{display:flex;flex-wrap:wrap;gap:5px;}
+        .hpill{font-size:9px;padding:3px 8px;border:1px solid #00ff9d;border-radius:2px;color:#00ff9d;background:#010f08;letter-spacing:0.1em;text-transform:uppercase;}
+        .hpill-dim{border-color:#005c38;color:#00804f;}
+
+        .sec-head{font-family:'Orbitron',monospace;font-size:9px;font-weight:600;color:#00804f;letter-spacing:0.2em;text-transform:uppercase;padding:6px 0;border-bottom:1px solid #0f3d2a;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+        .sec-head::before{content:'//';color:#005c38;}
+
+        .stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px;}
+        .stat-hud{background:#010f08;border:1px solid #0f3d2a;border-radius:6px;padding:12px;text-align:center;position:relative;overflow:hidden;}
+        .stat-hud::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:#00ff9d;transform:scaleX(0);transition:transform 0.5s;}
+        .stat-hud.loaded::after{transform:scaleX(1);}
+        .stat-n{font-family:'Orbitron',monospace;font-size:22px;font-weight:700;color:#00ff9d;line-height:1;}
+        .stat-l{font-size:9px;color:#00804f;letter-spacing:0.12em;margin-top:5px;text-transform:uppercase;}
+
+        .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;}
+        @media(max-width:700px){.grid2{grid-template-columns:1fr;}}
+        .hud-card{background:#010f08;border:1px solid #0f3d2a;border-radius:6px;padding:12px;}
+
+        .exp-block{border-left:2px solid #00ff9d;padding-left:12px;margin-bottom:12px;}
+        .exp-block:last-child{margin-bottom:0;}
+        .exp-title{font-family:'Orbitron',monospace;font-size:10px;font-weight:600;color:#00ff9d;margin-bottom:2px;}
+        .exp-co{font-size:10px;color:#00cc7a;margin-bottom:2px;}
+        .exp-date{font-size:9px;color:#005c38;margin-bottom:4px;}
+        .exp-tags{display:flex;flex-wrap:wrap;gap:3px;}
+        .etag{font-size:8px;padding:1px 6px;border:1px solid #0f3d2a;color:#00804f;border-radius:2px;}
+
+        .skill-section{margin-bottom:20px;}
+        .skill-cat-label{font-size:9px;color:#00804f;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:6px;margin-top:12px;}
+        .skill-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:5px;}
+        .sk{display:flex;align-items:center;gap:6px;background:#010f08;border:1px solid #0f3d2a;border-radius:3px;padding:6px 8px;font-size:10px;color:#00cc7a;}
+        .sk i{font-size:13px;color:#00ff9d;}
+        .sk:hover{border-color:#00ff9d;color:#00ff9d;}
+
+        .lang-row{margin-bottom:8px;}
+        .lang-meta{display:flex;justify-content:space-between;font-size:10px;margin-bottom:3px;}
+        .lang-name-l{color:#00cc7a;display:flex;align-items:center;gap:5px;}
+        .lang-pct-l{color:#00804f;}
+        .lang-track{height:4px;background:#0f3d2a;border-radius:2px;overflow:hidden;}
+        .lang-fill{height:100%;border-radius:2px;background:#00ff9d;transition:width 1.2s ease;}
+
+        .soc-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+        .soc-btn{display:flex;align-items:center;gap:7px;padding:7px 10px;background:#010f08;border:1px solid #0f3d2a;border-radius:3px;text-decoration:none;transition:border-color 0.2s;color:#00cc7a;}
+        .soc-btn:hover{border-color:#00ff9d;color:#00ff9d;}
+        .soc-btn i{font-size:15px;color:#00ff9d;}
+        .soc-n{font-size:10px;color:#00cc7a;}
+        .soc-s{font-size:9px;color:#005c38;}
+
+        .ach-item{display:flex;align-items:flex-start;gap:8px;padding:7px 0;border-bottom:1px solid #0a2018;}
+        .ach-item:last-child{border-bottom:none;}
+        .ach-yr{font-size:9px;color:#005c38;width:34px;flex-shrink:0;padding-top:1px;}
+        .ach-title{font-size:10px;color:#00cc7a;line-height:1.5;}
+        .ach-src{font-size:9px;color:#005c38;}
+
+        .contact-row-j{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid #0a2018;}
+        .contact-row-j:last-child{border-bottom:none;}
+        .cj-ico{width:24px;height:24px;border:1px solid #0f3d2a;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:12px;color:#00ff9d;flex-shrink:0;}
+        .cj-label{font-size:9px;color:#005c38;}
+        .cj-val{font-size:10px;color:#00cc7a;}
+        .cj-link{color:#00ff9d;text-decoration:none;font-size:10px;}
+        .cj-link:hover{text-decoration:underline;}
+
+        .snake-wrap-j{background:#010f08;border:1px solid #0f3d2a;border-radius:6px;padding:14px;margin-bottom:20px;}
+        .snake-canvas-j{display:flex;flex-wrap:wrap;gap:2px;justify-content:center;}
+        .sc{width:11px;height:11px;border-radius:2px;}
+        .sc-0{background:#0a2018;}.sc-1{background:#0f4030;}.sc-2{background:#1d6b50;}.sc-3{background:#00cc7a;}.sc-4{background:#00ff9d;}
+        .sc-s{background:#020d0a;border-radius:50%;border:2px solid #00ff9d;box-shadow:0 0 6px #00ff9d;}
+
+        .scan-line{position:absolute;left:0;right:0;height:1px;background:rgba(0,255,157,0.12);animation:scanline 6s linear infinite;pointer-events:none;z-index:2;}
+        @keyframes scanline{0%{top:0%;}100%{top:100%;}}
+
+        .blink{animation:blink 1.2s step-end infinite;}
+        @keyframes blink{0%,100%{opacity:1;}50%{opacity:0;}}
+
+        .boot-line{font-size:10px;color:#005c38;margin-bottom:3px;letter-spacing:0.05em;}
+        .boot-ok{color:#00ff9d;}
+
+        .trophy-row-j{display:flex;flex-wrap:wrap;gap:6px;}
+        .trophy-j{display:flex;flex-direction:column;align-items:center;gap:4px;background:#010f08;border:1px solid #0f3d2a;border-radius:4px;padding:9px 12px;min-width:76px;}
+        .trophy-j i{font-size:18px;color:#00ff9d;}
+        .trophy-j span{font-size:9px;color:#00804f;text-align:center;letter-spacing:0.08em;text-transform:uppercase;}
+
+        .progress-indicator{width:100%;height:2px;background:#0f3d2a;border-radius:1px;overflow:hidden;margin-bottom:16px;}
+        .progress-fill-j{height:100%;background:#00ff9d;width:0;animation:progfill 2.5s ease forwards;}
+        @keyframes progfill{to{width:100%;}}
+
+        @media(max-width:600px){
+            .jv{padding:1rem;}
+            .hero-grid{grid-template-columns:60px 1fr;}
+            .avatar-hud{width:60px;height:60px;font-size:18px;}
+            .id-tag{font-size:16px;}
+            .stats-row{grid-template-columns:1fr;}
+            .skill-grid{grid-template-columns:repeat(auto-fill,minmax(85px,1fr));}
+        }
+    </style>
+</head>
+<body>
+
+<div class="jv">
+    <div class="scan-line"></div>
+
+    <div class="progress-indicator"><div class="progress-fill-j"></div></div>
+
+    <div class="hud-top">
+        <span class="hud-logo"><i class="ti ti-hexagon" style="font-size:12px;vertical-align:-1px;"></i> KHAIRUL.SYS v2.6.0</span>
+        <div class="hud-status"><div class="dot-pulse"></div><span>SYSTEM ONLINE</span></div>
+        <span class="hud-time" id="hud-clock">--:--:--</span>
+    </div>
+
+    <div style="margin-bottom:16px;">
+        <div class="boot-line">[ <span class="boot-ok">OK</span> ] Loading identity module...</div>
+        <div class="boot-line">[ <span class="boot-ok">OK</span> ] Network stack initialized — Mikrotik MTCNA · MTCRE · BGP</div>
+        <div class="boot-line">[ <span class="boot-ok">OK</span> ] Web engine ready — Laravel · React · MERN</div>
+        <div class="boot-line">[ <span class="boot-ok">OK</span> ] CCTV & Access Control systems armed</div>
+        <div class="boot-line">[ <span class="boot-ok">OK</span> ] All modules loaded<span class="blink">_</span></div>
+    </div>
+
+    <div class="hero-grid">
+        <div class="avatar-hud">
+            MK
+            <div class="corner c-tl"></div>
+            <div class="corner c-tr"></div>
+            <div class="corner c-bl"></div>
+            <div class="corner c-br"></div>
+        </div>
+        <div>
+            <p class="id-tag">MD KHAIRUL ISLAM</p>
+            <p class="id-role"><i class="ti ti-router" style="font-size:11px;vertical-align:-1px;"></i> NETWORK ENG · FULL STACK DEV · IT OFFICER</p>
+            <p class="id-loc"><i class="ti ti-map-pin" style="font-size:11px;vertical-align:-1px;"></i> SHAFIPUR, KALIAKOIR, GAZIPUR, BD | IUBAT · CGPA 3.10</p>
+            <div class="pill-row">
+                <span class="hpill"><i class="ti ti-router" style="font-size:9px;"></i> MIKROTIK ISP</span>
+                <span class="hpill"><i class="ti ti-network" style="font-size:9px;"></i> CISCO</span>
+                <span class="hpill"><i class="ti ti-code" style="font-size:9px;"></i> FULL STACK</span>
+                <span class="hpill-dim"><i class="ti ti-table" style="font-size:9px;"></i> EXCEL</span>
+                <span class="hpill-dim"><i class="ti ti-cctv" style="font-size:9px;"></i> CCTV</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="stats-row" id="stats">
+        <div class="stat-hud">
+            <div class="stat-n" id="s1">0</div>
+            <div class="stat-l"><i class="ti ti-git-branch" style="font-size:10px;"></i> REPOSITORIES</div>
+        </div>
+        <div class="stat-hud">
+            <div class="stat-n" id="s2">0</div>
+            <div class="stat-l"><i class="ti ti-activity" style="font-size:10px;"></i> CONTRIBUTIONS</div>
+        </div>
+        <div class="stat-hud">
+            <div class="stat-n" id="s3">0</div>
+            <div class="stat-l"><i class="ti ti-calendar" style="font-size:10px;"></i> YRS ACTIVE</div>
+        </div>
+    </div>
+
+    <div class="grid2">
+        <div class="hud-card">
+            <p class="sec-head">EXPERIENCE LOG</p>
+            <div class="exp-block">
+                <p class="exp-title"><i class="ti ti-cctv" style="font-size:10px;"></i> JR. EXECUTIVE ADMIN</p>
+                <p class="exp-co">EDGE TECH BD</p>
+                <p class="exp-date">OCT 2025 — MAR 2026</p>
+                <div class="exp-tags"><span class="etag">CCTV</span><span class="etag">ACCESS CTRL</span><span class="etag">INTERCOM</span></div>
+            </div>
+            <div class="exp-block">
+                <p class="exp-title"><i class="ti ti-code" style="font-size:10px;"></i> JR. FULL STACK DEV</p>
+                <p class="exp-co">CODE TREE IT LTD</p>
+                <p class="exp-date">SEP 2024 — APR 2025</p>
+                <div class="exp-tags"><span class="etag">LARAVEL</span><span class="etag">PHP</span><span class="etag">LMS</span></div>
+            </div>
+            <div class="exp-block">
+                <p class="exp-title"><i class="ti ti-code" style="font-size:10px;"></i> JR. FULL STACK DEV</p>
+                <p class="exp-co">4AXIZ IT LTD</p>
+                <p class="exp-date">MAY 2023 — OCT 2023</p>
+                <div class="exp-tags"><span class="etag">LARAVEL</span><span class="etag">PHP</span><span class="etag">HRM</span></div>
+            </div>
+        </div>
+
+        <div class="hud-card">
+            <p class="sec-head">CONTACT UPLINK</p>
+            <div class="contact-row-j">
+                <div class="cj-ico"><i class="ti ti-mail"></i></div>
+                <div><p class="cj-label">EMAIL</p><a class="cj-link" href="mailto:iubat21103033@gmail.com">iubat21103033@gmail.com</a></div>
+            </div>
+            <div class="contact-row-j">
+                <div class="cj-ico"><i class="ti ti-world"></i></div>
+                <div><p class="cj-label">PORTFOLIO</p><a class="cj-link" href="https://engr-khairul.netlify.app/" target="_blank">engr-khairul.netlify.app ↗</a></div>
+            </div>
+            <div class="contact-row-j">
+                <div class="cj-ico"><i class="ti ti-brand-github"></i></div>
+                <div><p class="cj-label">GITHUB</p><a class="cj-link" href="https://github.com/Khairulhub" target="_blank">github.com/Khairulhub ↗</a></div>
+            </div>
+            <div class="contact-row-j">
+                <div class="cj-ico"><i class="ti ti-phone"></i></div>
+                <div><p class="cj-label">PHONE</p><p class="cj-val">+8801788468527</p></div>
+            </div>
+            <p class="sec-head" style="margin-top:14px;">SOCIAL LINKS</p>
+            <div class="soc-grid">
+                <a class="soc-btn" href="https://www.linkedin.com/in/khairulhub/" target="_blank"><i class="ti ti-brand-linkedin"></i><div><p class="soc-n">LinkedIn</p><p class="soc-s">khairulhub ↗</p></div></a>
+                <a class="soc-btn" href="https://www.facebook.com/khairlhub" target="_blank"><i class="ti ti-brand-facebook"></i><div><p class="soc-n">Facebook</p><p class="soc-s">khairlhub ↗</p></div></a>
+                <a class="soc-btn" href="https://stackoverflow.com/users/20546518/khairulhub" target="_blank"><i class="ti ti-brand-stackoverflow"></i><div><p class="soc-n">Stack Overflow</p><p class="soc-s">khairulhub ↗</p></div></a>
+                <a class="soc-btn" href="https://codepen.io/khairulhub" target="_blank"><i class="ti ti-brand-codepen"></i><div><p class="soc-n">CodePen</p><p class="soc-s">khairulhub ↗</p></div></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="skill-section">
+        <p class="sec-head">SKILL MATRIX</p>
+        <p class="skill-cat-label"><i class="ti ti-router" style="font-size:10px;"></i> NETWORKING & INFRASTRUCTURE</p>
+        <div class="skill-grid">
+            <div class="sk"><i class="ti ti-router"></i>Mikrotik</div>
+            <div class="sk"><i class="ti ti-topology-star"></i>Cisco</div>
+            <div class="sk"><i class="ti ti-network"></i>LAN/WAN</div>
+            <div class="sk"><i class="ti ti-shield-lock"></i>BGP/OSPF</div>
+            <div class="sk"><i class="ti ti-server"></i>DNS/DHCP</div>
+            <div class="sk"><i class="ti ti-cctv"></i>CCTV</div>
+            <div class="sk"><i class="ti ti-cpu"></i>PC Assembly</div>
+            <div class="sk"><i class="ti ti-topology-ring"></i>Pkt Tracer</div>
+        </div>
+        <p class="skill-cat-label"><i class="ti ti-code" style="font-size:10px;"></i> WEB DEVELOPMENT</p>
+        <div class="skill-grid">
+            <div class="sk"><i class="ti ti-brand-html5"></i>HTML5</div>
+            <div class="sk"><i class="ti ti-brand-css3"></i>CSS3</div>
+            <div class="sk"><i class="ti ti-brand-javascript"></i>JavaScript</div>
+            <div class="sk"><i class="ti ti-brand-react"></i>React.js</div>
+            <div class="sk"><i class="ti ti-brand-php"></i>PHP</div>
+            <div class="sk"><i class="ti ti-leaf"></i>Laravel</div>
+            <div class="sk"><i class="ti ti-brand-mongodb"></i>MongoDB</div>
+            <div class="sk"><i class="ti ti-database"></i>MySQL</div>
+            <div class="sk"><i class="ti ti-brand-nodejs"></i>Node.js</div>
+        </div>
+        <p class="skill-cat-label"><i class="ti ti-table" style="font-size:10px;"></i> MS OFFICE & DATA</p>
+        <div class="skill-grid">
+            <div class="sk"><i class="ti ti-table"></i>MS Excel</div>
+            <div class="sk"><i class="ti ti-file-text"></i>MS Word</div>
+            <div class="sk"><i class="ti ti-presentation"></i>PowerPoint</div>
+            <div class="sk"><i class="ti ti-chart-bar"></i>Data Analysis</div>
+            <div class="sk"><i class="ti ti-forms"></i>Google Forms</div>
+        </div>
+    </div>
+
+    <div class="grid2" style="margin-bottom:20px;">
+        <div class="hud-card">
+            <p class="sec-head">SKILL POWER LEVELS</p>
+            <div class="lang-row"><div class="lang-meta"><span class="lang-name-l"><i class="ti ti-brand-php" style="font-size:11px;"></i>PHP / Laravel</span><span class="lang-pct-l">95%</span></div><div class="lang-track"><div class="lang-fill" style="width:0" data-w="95%"></div></div></div>
+            <div class="lang-row"><div class="lang-meta"><span class="lang-name-l"><i class="ti ti-router" style="font-size:11px;"></i>Mikrotik</span><span class="lang-pct-l">88%</span></div><div class="lang-track"><div class="lang-fill" style="width:0" data-w="88%"></div></div></div>
+            <div class="lang-row"><div class="lang-meta"><span class="lang-name-l"><i class="ti ti-brand-javascript" style="font-size:11px;"></i>JavaScript</span><span class="lang-pct-l">90%</span></div><div class="lang-track"><div class="lang-fill" style="width:0" data-w="90%"></div></div></div>
+            <div class="lang-row"><div class="lang-meta"><span class="lang-name-l"><i class="ti ti-topology-star" style="font-size:11px;"></i>Cisco</span><span class="lang-pct-l">82%</span></div><div class="lang-track"><div class="lang-fill" style="width:0" data-w="82%"></div></div></div>
+            <div class="lang-row"><div class="lang-meta"><span class="lang-name-l"><i class="ti ti-brand-html5" style="font-size:11px;"></i>HTML5</span><span class="lang-pct-l">90%</span></div><div class="lang-track"><div class="lang-fill" style="width:0" data-w="90%"></div></div></div>
+            <div class="lang-row"><div class="lang-meta"><span class="lang-name-l"><i class="ti ti-table" style="font-size:11px;"></i>MS Excel</span><span class="lang-pct-l">85%</span></div><div class="lang-track"><div class="lang-fill" style="width:0" data-w="85%"></div></div></div>
+        </div>
+
+        <div class="hud-card">
+            <p class="sec-head">CERT & ACHIEVEMENT LOG</p>
+            <div class="ach-item"><span class="ach-yr">2026</span><div><p class="ach-title"><i class="ti ti-router" style="font-size:10px;"></i> Mikrotik MTCNA · MTCRE · OLT · BGP</p><p class="ach-src">CSL</p></div></div>
+            <div class="ach-item"><span class="ach-yr">2024</span><div><p class="ach-title"><i class="ti ti-code" style="font-size:10px;"></i> Full Stack Web Developer</p><p class="ach-src">CodeTree</p></div></div>
+            <div class="ach-item"><span class="ach-yr">2023</span><div><p class="ach-title"><i class="ti ti-code" style="font-size:10px;"></i> Full Stack Web Developer</p><p class="ach-src">4Axiz It Ltd</p></div></div>
+            <div class="ach-item"><span class="ach-yr">2022</span><div><p class="ach-title"><i class="ti ti-trophy" style="font-size:10px;"></i> Runner-up — Innovation Manifest</p><p class="ach-src">IUBAT</p></div></div>
+            <div class="ach-item"><span class="ach-yr">2021</span><div><p class="ach-title"><i class="ti ti-school" style="font-size:10px;"></i> Full Stack Web Dev</p><p class="ach-src">Programming Hero</p></div></div>
+            <div class="ach-item"><span class="ach-yr">2019</span><div><p class="ach-title"><i class="ti ti-brand-wordpress" style="font-size:10px;"></i> WordPress Customization</p><p class="ach-src">LEDP</p></div></div>
+        </div>
+    </div>
+
+    <div class="hud-card" style="margin-bottom:20px;">
+        <p class="sec-head">TROPHY RACK</p>
+        <div class="trophy-row-j">
+            <div class="trophy-j"><i class="ti ti-trophy"></i><span>MULTI<br>LANG</span></div>
+            <div class="trophy-j"><i class="ti ti-star"></i><span>STAR<br>EARNER</span></div>
+            <div class="trophy-j"><i class="ti ti-git-commit"></i><span>COMMIT<br>STREAK</span></div>
+            <div class="trophy-j"><i class="ti ti-certificate"></i><span>CERT<br>DEV</span></div>
+            <div class="trophy-j"><i class="ti ti-router"></i><span>NET<br>EXPERT</span></div>
+            <div class="trophy-j"><i class="ti ti-clock"></i><span>EARLY<br>BIRD</span></div>
+        </div>
+    </div>
+
+    <div class="snake-wrap-j">
+        <p class="sec-head">CONTRIBUTION GRID — SNAKE ACTIVE</p>
+        <div class="snake-canvas-j" id="sg"></div>
+        <p style="font-size:9px;color:#005c38;text-align:center;margin-top:10px;letter-spacing:0.1em;">LIVE SNAKE AUTO-GENERATED VIA GITHUB ACTIONS WORKFLOW</p>
+    </div>
+
+    <div style="border-top:1px solid #0f3d2a;padding-top:10px;display:flex;justify-content:space-between;align-items:center;">
+        <span style="font-size:9px;color:#005c38;letter-spacing:0.12em;">KHAIRUL.SYS — ALL SYSTEMS NOMINAL</span>
+        <span style="font-size:9px;color:#005c38;" id="uptime">UPTIME: 00:00:00</span>
+    </div>
+</div>
+
+<script>
+const sg=document.getElementById('sg');
+const cells=[];
+for(let i=0;i<140;i++){
+  const d=document.createElement('div');
+  const r=Math.random();
+  d.className='sc '+(r<0.38?'sc-0':r<0.55?'sc-1':r<0.72?'sc-2':r<0.88?'sc-3':'sc-4');
+  cells.push(d);sg.appendChild(d);
+}
+let pos=0,dir=1;
+function base(){const r=Math.random();return'sc '+(r<0.38?'sc-0':r<0.55?'sc-1':r<0.72?'sc-2':r<0.88?'sc-3':'sc-4');}
+setInterval(()=>{
+  cells[pos].className='sc sc-s';
+  const cp=pos;
+  setTimeout(()=>{cells[cp].className=base();},200);
+  pos+=dir;
+  if(pos>=cells.length||pos<0){dir*=-1;pos+=dir*2;}
+},65);
+
+function pad(n){return String(n).padStart(2,'0');}
+function tick(){
+  const now=new Date();
+  document.getElementById('hud-clock').textContent=pad(now.getHours())+':'+pad(now.getMinutes())+':'+pad(now.getSeconds());
+}
+tick();setInterval(tick,1000);
+
+let sec=0;
+setInterval(()=>{sec++;const h=Math.floor(sec/3600),m=Math.floor((sec%3600)/60),s=sec%60;document.getElementById('uptime').textContent='UPTIME: '+pad(h)+':'+pad(m)+':'+pad(s);},1000);
+
+function countUp(el,target,suffix){
+  let v=0;const step=Math.ceil(target/40);
+  const iv=setInterval(()=>{v=Math.min(v+step,target);el.textContent=v+suffix;if(v>=target)clearInterval(iv);},40);
+}
+setTimeout(()=>{
+  countUp(document.getElementById('s1'),50,'+');
+  countUp(document.getElementById('s2'),500,'+');
+  countUp(document.getElementById('s3'),3,'+');
+  document.querySelectorAll('.stat-hud').forEach(s=>s.classList.add('loaded'));
+},800);
+
+setTimeout(()=>{
+  document.querySelectorAll('.lang-fill').forEach(b=>{b.style.width=b.dataset.w;});
+},600);
+</script>
+
+</body>
+</html>
