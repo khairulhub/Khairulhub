@@ -1,14 +1,3 @@
-<iframe src="https://khairulhub.github.io/khairulhub/jarvis.html" width="100%" height="800" style="border:1px solid #0f3d2a;border-radius:6px;"></iframe>
-
-# 🔮 View Full Interactive Version
-<div align="center">
-
-[📱 **View Static Profile** (Above)](https://github.com/khairulhub) • [🔮 **View Interactive JARVIS** ↗](https://khairulhub.github.io/jarvis.html)
-
-</div>
-
-
-
 <!-- JARVIS MODE HEADER -->
 <div align="center">
 <img src="https://img.shields.io/badge/🔮_KHAIRUL.SYS-v2.6.0-020d0a?style=for-the-badge&labelColor=0f3d2a&color=00ff9d" alt="KHAIRUL.SYS"/>
